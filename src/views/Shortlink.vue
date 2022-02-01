@@ -1,6 +1,14 @@
 <template>
   <div>
-    <h1 v-if="redirected">Anda sedang diarahkan ke halaman yang anda tuju...</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1 v-if="redirected">
+            Anda sedang diarahkan ke halaman yang anda tuju...
+          </h1>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -12,7 +20,7 @@ import { reactive, ref } from "vue";
 export default {
   setup() {
     const route = useRoute();
-    const redirected = ref(false)
+    const redirected = ref(false);
 
     let hash = route.params.hash;
 
@@ -27,7 +35,7 @@ export default {
         // console.log(res);
         res.forEach((link) => {
           if (link.hash == hash) {
-            redirected.value = true
+            redirected.value = true;
             window.location.replace(link.url);
           }
         });
