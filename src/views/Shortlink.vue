@@ -1,37 +1,41 @@
 <template>
   <div>
-    <h1>Halaman Bitly</h1>
+    <h1 v-if="redirected">Anda sedang diarahkan ke halaman yang anda tuju...</h1>
   </div>
 </template>
 
 <script>
 import { useRoute } from "vue-router";
+import { colRef } from "../firebase";
+import { onSnapshot } from "firebase/firestore";
+import { reactive, ref } from "vue";
 export default {
   setup() {
     const route = useRoute();
+    const redirected = ref(false)
+
+    let hash = route.params.hash;
 
     const redirect = () => {
-      let hash = route.params.hash
-      // http://localhost:8080
-      fetch("http://localhost:3000/link")
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("HTTP error " + response.status);
-          }
-          return response.json();
-        })
-        .then((json) => {
-          json.forEach((element) => {
-            if (element.hash == hash) {
-              return window.location.replace(element.url);
-            }
-          });
-        })
-        .catch(function () {
-          this.dataError = true;
+      onSnapshot(colRef, async (snapshot) => {
+        let res = [];
+        // users = [];
+        // await links.splice(0, links.length);
+        snapshot.docs.forEach(async (doc) => {
+          await res.push({ ...doc.data(), id: doc.id });
         });
+        // console.log(res);
+        res.forEach((link) => {
+          if (link.hash == hash) {
+            redirected.value = true
+            window.location.replace(link.url);
+          }
+        });
+      });
     };
     redirect();
+
+    return { redirected };
   },
 };
 </script>
