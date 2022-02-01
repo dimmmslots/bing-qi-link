@@ -1,6 +1,13 @@
 <template>
   <div>
-    <h1 v-if="redirected">Anda sedang diarahkan ke halaman yang anda tuju...</h1>
+    <h1 v-if="redirected">
+      Anda sedang diarahkan ke halaman yang anda tuju...
+    </h1>
+    <div class="" v-if="!redirected">
+      <h1>Mercusuar Page</h1>
+      <p>Link yang anda tuju tidak tersedia didalam server kami.</p>
+      <router-link to="/">Kembali ke shortlink</router-link>
+    </div>
   </div>
 </template>
 
@@ -12,7 +19,7 @@ import { reactive, ref } from "vue";
 export default {
   setup() {
     const route = useRoute();
-    const redirected = ref(false)
+    const redirected = ref(false);
 
     let hash = route.params.hash;
 
@@ -27,7 +34,7 @@ export default {
         // console.log(res);
         res.forEach((link) => {
           if (link.hash == hash) {
-            redirected.value = true
+            redirected.value = true;
             window.location.replace(link.url);
           }
         });

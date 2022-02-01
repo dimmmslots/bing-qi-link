@@ -5,8 +5,8 @@
       <input type="url" v-model="input.url" class="form-control" />
       <div class=""  v-if="hashed" >
         <span class="mx-2">Link : </span>
-        <a :href="'key/' + hashed" class="text-decoration-underline"
-          >http://localhost:8080/key/{{ hashed }}</a
+        <router-link :to="'/key/'+hashed" class="text-decoration-underline"
+          >http://localhost:8080/key/{{ hashed }}</router-link
         >
       </div>
       <button class="btn btn-primary my-2" v-if="!hashed" >Shorten</button>
