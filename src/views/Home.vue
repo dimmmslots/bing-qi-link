@@ -44,12 +44,12 @@
                       <div class="col-md-2">
                         <span>Result : </span>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-7">
                         <span
                           class="text-black"
                           style="text-decoration: none"
                           id="copy"
-                          ><strong class="fs-18"
+                          ><strong style="font-size: 11pt"
                             >https://bing-qi-link.vercel.app/key/{{ hashed }}</strong
                           ></span
                         >
