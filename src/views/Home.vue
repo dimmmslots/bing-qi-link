@@ -50,7 +50,7 @@
                           style="text-decoration: none"
                           id="copy"
                           ><strong class="fs-18"
-                            >http://localhost:8080/key/{{ hashed }}</strong
+                            >https://bing-qi-link.vercel.app/key/{{ hashed }}</strong
                           ></span
                         >
                       </div>
