@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <h1 v-if="redirected">
+          <h1>
             Anda sedang diarahkan ke halaman yang anda tuju...
           </h1>
         </div>
@@ -41,7 +41,7 @@ export default {
         });
       });
     };
-    redirect();
+    // redirect();
 
     return { redirected };
   },

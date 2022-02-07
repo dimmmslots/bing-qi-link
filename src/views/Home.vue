@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1 class="text-primary text-center"><strong>Bing Qi Link</strong></h1>
+    <h1 class="text-primary text-center"><strong><i class="fas fa-ice-cream"></i> Bing Qi Link</strong></h1>
     <h4 class="text-center"><strong>URL Shortener</strong></h4>
     <div class="container" style="max-width: 800px">
       <div class="card mt-4">
@@ -20,14 +20,14 @@
                     required
                   />
                   <button class="btn btn-primary" v-if="!hashed">
-                    Shorten URL
+                    <i class="fas fa-link"></i> Shorten
                   </button>
                   <button
                     class="btn btn-light text-primary"
                     style="border: 1px solid #0b5ed7"
                     v-if="hashed"
                   >
-                    Shortened
+                   <i class="fas fa-check"></i> Shortened
                   </button>
                 </div>
               </div>
@@ -35,19 +35,41 @@
             <div class="container">
               <div class="row mt-3 justify-content-center">
                 <div class="col-md-10">
-                  <div class="alert alert-primary" v-if="hashed">
-                    <span>Result : </span>
-                    <a
-                      class="text-black mx-2"
-                      style="text-decoration: none"
-                      ><strong
-                        >http://localhost:8080/key/{{ hashed }}</strong
-                      ></a
-                    >
+                  <div
+                    class="alert alert-light"
+                    style="border: 1px solid #0b5ed7"
+                    v-if="hashed"
+                  >
+                    <div class="row justify-content-center align-items-center">
+                      <div class="col-md-2">
+                        <span>Result : </span>
+                      </div>
+                      <div class="col-md-6">
+                        <span
+                          class="text-black"
+                          style="text-decoration: none"
+                          id="copy"
+                          ><strong class="fs-18"
+                            >http://localhost:8080/key/{{ hashed }}</strong
+                          ></span
+                        >
+                      </div>
+                      <div class="col-md-3">
+                        <button
+                          class="btn btn-primary btn-sm mx-1"
+                          id="btn-copy"
+                          data-clipboard-target="#copy"
+                        >
+                          <i class="fas fa-copy"></i>
+                        </button>
+                        <a
+                          class="btn btn-primary btn-sm"
+                          v-if="hashed"
+                          :href="'key/' + hashed"
+                          >Go!</a>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="col-md-4 mb-2">
-                  <a class="btn btn-primary btn-sm" v-if="hashed" :href="'key/' + hashed">Go to Link</a>
                 </div>
               </div>
             </div>
@@ -61,17 +83,22 @@
         </div>
       </div>
     </div>
+    <Footer />
   </div>
+  <!-- <h1>{{ counter }} Kali</h1>
+  <button @click="counter++">Klik</button> -->
 </template>
 
 <script>
 // @ is an alias to /src
-
+import Footer from "@/components/Footer.vue";
 import { reactive, ref } from "vue";
 import { addDoc, onSnapshot } from "firebase/firestore";
 import { colRef, db } from "../firebase";
+import ClipboardJS from "clipboard";
 export default {
   name: "Home",
+  components: { Footer },
   setup() {
     let hashed = ref("");
     let input = reactive({
@@ -115,7 +142,8 @@ export default {
         });
       }
     };
-
+    new ClipboardJS("#btn-copy");
+    // let counter = ref(0);
     return { shorten, hashed, input };
   },
 };
