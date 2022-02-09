@@ -6,6 +6,11 @@
           <h1 v-if="redirected">
             Anda sedang diarahkan ke halaman yang anda tuju...
           </h1>
+          <div v-if="notFound">
+            <h1>:(</h1>
+            <h4>Alamat <code>http://localhost:8080/key/{{ hash }}</code> tidak terdaftar di server kami.</h4>
+            <router-link to="/" class="btn btn-sm btn-primary"><i class="fas fa-arrow-left"></i> Kembali</router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -21,6 +26,7 @@ export default {
   setup() {
     const route = useRoute();
     const redirected = ref(false);
+    const notFound = ref(false);
 
     let hash = route.params.hash;
 
@@ -39,11 +45,14 @@ export default {
             window.location.replace(link.url);
           }
         });
+        if (await !redirected.value) {
+          notFound.value = true;
+        }
       });
     };
     redirect();
 
-    return { redirected };
+    return { redirected, hash, notFound };
   },
 };
 </script>
