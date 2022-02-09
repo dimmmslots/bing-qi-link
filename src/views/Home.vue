@@ -44,19 +44,19 @@
                       <div class="col-md-2">
                         <span>Result : </span>
                       </div>
-                      <div class="col-md-7">
+                      <div class="col-md-6 py-2">
                         <span
                           class="text-black"
                           style="text-decoration: none"
                           id="copy"
                           ><strong style="font-size: 11pt"
-                            >https://bing-qi-link.vercel.app/key/{{ hashed }}</strong
+                            >https://bql.co.vu/{{ hashed }}</strong
                           ></span
                         >
                       </div>
-                      <div class="col-md-3">
+                      <div class="col-md-4 py-2">
                         <button
-                          class="btn btn-primary btn-sm mx-1"
+                          class="btn btn-primary btn-sm mx-2"
                           id="btn-copy"
                           data-clipboard-target="#copy"
                         >
@@ -66,7 +66,7 @@
                           class="btn btn-primary btn-sm"
                           v-if="hashed"
                           :href="'key/' + hashed"
-                          >Go!</a>
+                          >Go to Link <i class="fas fa-arrow-right"></i></a>
                       </div>
                     </div>
                   </div>
