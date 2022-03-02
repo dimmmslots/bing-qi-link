@@ -5,13 +5,13 @@
       <p class="text-center text-muted">
         Build with ❤️ using
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg"
+          src="../assets/logo.png"
           width="20px"
           alt=""
         />
         +
         <img
-          src="https://filebin.net/q696z7gzczsxm7dj/svg.svg"
+          src="../assets/firebase.svg"
           width="24px"
           alt=""
         />

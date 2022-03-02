@@ -3,9 +3,14 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <h1 v-if="redirected">
-            Anda sedang diarahkan ke halaman yang anda tuju...
+          <h1 v-if="countdown">
+            <!-- Anda sedang diarahkan ke halaman yang anda tuju... -->
+            <h1>{{countdown}} detik</h1>
           </h1>
+          <h1 v-if="!countdown">
+          Link sudah siap!
+          </h1>
+          <button class="btn btn-sm btn-success" @click="redirect" :class="{disabled: countdown}">Continue to Site</button>
           <div v-if="notFound">
             <h1>:(</h1>
             <h4>Alamat <code>http://localhost:8080/key/{{ hash }}</code> tidak terdaftar di server kami.</h4>
@@ -21,7 +26,7 @@
 import { useRoute } from "vue-router";
 import { colRef } from "../firebase";
 import { onSnapshot } from "firebase/firestore";
-import { reactive, ref } from "vue";
+import { computed, reactive, ref } from "vue";
 export default {
   setup() {
     const route = useRoute();
@@ -50,9 +55,21 @@ export default {
         }
       });
     };
-    redirect();
+    // redirect();
 
-    return { redirected, hash, notFound };
+    // make countdown
+    const countdown = ref(10);
+    const countdownDecrement = () => {
+      countdown.value--;
+    }
+    const timer = setInterval(() => {
+      console.log(`${countdown.value} seconds remaining...`);
+      countdownDecrement();
+      if (countdown.value == 0) {
+        clearInterval(timer);
+      }
+    }, 1000);
+    return { redirected, hash, notFound, countdown, redirect };
   },
 };
 </script>

@@ -13,7 +13,7 @@
     "bootstrap": "^5.1.3",
     "clipboard": "^2.0.10",
     "core-js": "^3.6.5",
-    "firebase": "^9.6.5",
+    "firebase": "^9.6.7",
     "hashlib": "^1.0.1",
     "sha-1": "^1.0.0",
     "vue": "^3.0.0",
