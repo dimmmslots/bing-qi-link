@@ -1,20 +1,47 @@
 <template>
   <div>
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <h1 v-if="countdown">
-            <!-- Anda sedang diarahkan ke halaman yang anda tuju... -->
-            <h1>{{countdown}} detik</h1>
-          </h1>
-          <h1 v-if="!countdown">
-          Link sudah siap!
-          </h1>
-          <button class="btn btn-sm btn-success" @click="redirect" :class="{disabled: countdown}">Continue to Site</button>
-          <div v-if="notFound">
-            <h1>:(</h1>
-            <h4>Alamat <code>http://localhost:8080/key/{{ hash }}</code> tidak terdaftar di server kami.</h4>
-            <router-link to="/" class="btn btn-sm btn-primary"><i class="fas fa-arrow-left"></i> Kembali</router-link>
+    <div class="container" style="max-width: 650px">
+      <div class="card mt-4" style="border-radius: 20px">
+        <div class="card-body">
+          <div class="row text-center mt-5 mb-5">
+            <div class="col-md-12" v-if="!notFound">
+              <div
+                v-if="countdown"
+                class="container rounded-circle"
+                style="width: 150px; height: 150px; border: 4px solid #0b5ed7"
+              >
+                <h1 class="mt-5" style="font-size: 48px">
+                  {{ countdown }}
+                </h1>
+              </div>
+              <h3 v-if="!countdown">This link is ready</h3>
+              <button
+                class="btn btn-lg btn-primary mt-3"
+                style="border-radius: 25px"
+                @click="redirect"
+                :class="{ disabled: countdown }"
+              >
+                Continue to Site
+              </button>
+            </div>
+            <div class="col-md-12 text-center">
+              <div v-if="notFound">
+                <img src="https://www.svgrepo.com/show/338120/sad-emoji-emoticon.svg" class="mb-3">
+                <br>
+                <code>http://localhost:8080/key/{{ hash }}</code>
+                <hr>
+                <h5>
+                  Maybe this link moved? Got deleted? <br />
+                  Is hiding out in quarantine? <br />
+                  Never existed in the first place? <br />
+                  <br />
+                  Let's go home and try from there.
+                </h5>
+                <router-link to="/" class="btn btn-primary" style="border-radius: 20px"
+                  >Return to Home</router-link
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -61,7 +88,7 @@ export default {
     const countdown = ref(10);
     const countdownDecrement = () => {
       countdown.value--;
-    }
+    };
     const timer = setInterval(() => {
       console.log(`${countdown.value} seconds remaining...`);
       countdownDecrement();
