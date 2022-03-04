@@ -1,23 +1,24 @@
 <template>
   <div>
     <div class="container" style="max-width: 650px">
-      <div class="card mt-4" style="border-radius: 20px">
+      <div class="card mt-4" id="card1">
         <div class="card-body">
           <div class="row text-center mt-5 mb-5">
             <div class="col-md-12" v-if="!notFound && destinationLink">
+              <p v-if="countdown" style="font-size:18px;"><i>Please wait until the link is ready...</i></p>
               <div
                 v-if="countdown"
+                id="circle"
                 class="container rounded-circle"
-                style="width: 150px; height: 150px; border: 4px solid #0b5ed7"
               >
-                <h1 class="mt-5" style="font-size: 48px">
+                <h1 id="countdown" class="mt-5">
                   {{ countdown }}
                 </h1>
               </div>
-              <h3>This link is ready</h3>
+              <h3 v-if="!countdown">This link is ready</h3>
               <button
+                id="btn-gotolink"
                 class="btn btn-lg btn-primary mt-3"
-                style="border-radius: 25px"
                 @click="goToLink"
                 :class="{ disabled: countdown }"
               >
@@ -42,8 +43,8 @@
                 </h5>
                 <router-link
                   to="/"
+                  id="btn-returnhome"
                   class="btn btn-primary"
-                  style="border-radius: 20px"
                   >Return to Home</router-link
                 >
               </div>
@@ -78,7 +79,7 @@ export default {
         res.forEach((link) => {
           if (link.hash == hash) {
             destinationLink.value = link.url;
-            countdown.value = 10;
+            countdown.value = 100;
             const timer = setInterval(() => {
               console.log(`${countdown.value} seconds remaining...`);
               countdownDecrement();
@@ -107,3 +108,22 @@ export default {
   },
 };
 </script>
+
+<style>
+  #card1 {
+    border-radius: 20px;
+  }
+  #circle {
+    width: 150px; height: 150px;
+    border: 4px solid #0b5ed7;
+  }
+  h1#countdown {
+    font-size: 48px;
+  }
+  button#btn-gotolink {
+    border-radius: 25px;
+  }
+  #btn-returnhome {
+    border-radius: 25px;
+  }
+</style>

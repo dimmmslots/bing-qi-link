@@ -1,9 +1,11 @@
 <template>
   <div class="home">
-    <h1 class="text-primary text-center"><strong><i class="fas fa-ice-cream"></i> Bing Qi Link</strong></h1>
+    <h1 class="text-primary text-center">
+      <strong><i class="fas fa-ice-cream"></i> Bing Qi Link</strong>
+    </h1>
     <h4 class="text-center"><strong>URL Shortener</strong></h4>
-    <div class="container" style="max-width: 800px">
-      <div class="card mt-4">
+    <div class="container" id="con1">
+      <div class="card mt-4" id="card1">
         <div class="card-body text-center">
           <form action="" @submit.prevent="shorten(link)">
             <h4 class="mt-3">
@@ -19,15 +21,15 @@
                     placeholder="Enter the link here"
                     required
                   />
-                  <button class="btn btn-primary" v-if="!hashed">
+                  <button class="btn btn-primary" id="btn-shorten" v-if="!hashed">
                     <i class="fas fa-link"></i> Shorten
                   </button>
                   <button
+                    id="btn-hashed"
                     class="btn btn-light text-primary"
-                    style="border: 1px solid #0b5ed7"
                     v-if="hashed"
                   >
-                   <i class="fas fa-check"></i> Shortened
+                    <i class="fas fa-check"></i> Shortened
                   </button>
                 </div>
               </div>
@@ -36,8 +38,8 @@
               <div class="row mt-3 justify-content-center">
                 <div class="col-md-10">
                   <div
+                    id="comp-hashed"
                     class="alert alert-light"
-                    style="border: 1px solid #0b5ed7"
                     v-if="hashed"
                   >
                     <div class="row justify-content-center align-items-center">
@@ -47,10 +49,9 @@
                       <div class="col-md-6 py-2">
                         <span
                           class="text-black"
-                          style="text-decoration: none"
                           id="copy"
-                          ><strong style="font-size: 11pt"
-                            >http://bing-qi-link.vercel.app/key/{{ hashed }}</strong
+                          ><i
+                            >http://bing-qi-link.vercel.app/key/{{ hashed }}</i
                           ></span
                         >
                       </div>
@@ -66,7 +67,8 @@
                           class="btn btn-primary btn-sm"
                           v-if="hashed"
                           :href="'key/' + hashed"
-                          >Go to Link <i class="fas fa-arrow-right"></i></a>
+                          >Go to Link <i class="fas fa-arrow-right"></i
+                        ></a>
                       </div>
                     </div>
                   </div>
@@ -148,3 +150,18 @@ export default {
   },
 };
 </script>
+
+<style>
+  #con1 {
+    max-width: 800px;
+  }
+  button#btn-hashed {
+    border: 1px solid #0b5ed7;
+  }
+  #comp-hashed {
+    border: 1px solid #0b5ed7;
+  }
+  span#copy {
+    text-decoration: underline;
+  }
+</style>
