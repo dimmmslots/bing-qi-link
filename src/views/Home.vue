@@ -50,7 +50,7 @@
                           style="text-decoration: none"
                           id="copy"
                           ><strong style="font-size: 11pt"
-                            >https://bql.co.vu/{{ hashed }}</strong
+                            >http://bing-qi-link.vercel.app/key/{{ hashed }}</strong
                           ></span
                         >
                       </div>
