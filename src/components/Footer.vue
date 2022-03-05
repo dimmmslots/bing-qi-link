@@ -3,7 +3,7 @@
     <footer class="pt-2 mt-2 fixed-bottom bg-light">
       <hr>
       <p class="text-center text-muted">
-        Build with ❤️ using
+        Build with ❤️ and 🔥 using
         <img
           src="../assets/logo.png"
           width="20px"
