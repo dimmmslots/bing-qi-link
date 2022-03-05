@@ -48,9 +48,7 @@
                       </div>
                       <div class="col-md-6 py-2">
                         <span class="text-black" id="copy"
-                          ><i
-                            >http://bql.co.vu/key/{{ hashed }}</i
-                          ></span
+                          ><i>http://bql.co.vu/key/{{ hashed }}</i></span
                         >
                       </div>
                       <div class="col-md-4 py-2">
@@ -187,7 +185,7 @@ span#copy {
   user-select: none;
   color: #fff;
   background-color: #0d6efd;
-  border:1px solid #0d6efd;
+  border: 1px solid #0d6efd;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   border-radius: 0.25rem;
@@ -199,20 +197,20 @@ span#copy {
   border: 1px solid #08377e;
 }
 .v-toast__item {
-    display: inline-flex;
-    align-items: center;
-    animation-duration: 150ms;
-    margin: .5em .5em;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-    border-radius: .25em;
-    pointer-events: auto;
-    opacity: .92;
-    color: #fff;
-    min-height: 3em;
-    cursor: pointer;
-    padding: 0 2em;
+  display: inline-flex;
+  align-items: center;
+  animation-duration: 150ms;
+  margin: 0.5em 0.5em;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+  border-radius: 0.25em;
+  pointer-events: auto;
+  opacity: 0.92;
+  color: #fff;
+  min-height: 3em;
+  cursor: pointer;
+  padding: 0 2em;
 }
 .v-toast__item--success {
-    background-color: #0b5ed7;
+  background-color: #0b5ed7;
 }
 </style>

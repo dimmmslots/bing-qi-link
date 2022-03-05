@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <footer class="pt-2 mt-2 fixed-bottom bg-light">
+    <footer class="fixed-bottom bg-white">
       <hr>
       <p class="text-center text-muted">
         Build with ❤️ and 🔥 using
