@@ -5,7 +5,9 @@
         <div class="card-body">
           <div class="row text-center mt-5 mb-5">
             <div class="col-md-12" v-if="!notFound && destinationLink">
-              <p v-if="countdown" style="font-size:18px;"><i>Please wait until the link is ready...</i></p>
+              <p v-if="countdown" style="font-size: 18px">
+                <i>Please wait until the link is ready...</i>
+              </p>
               <div
                 v-if="countdown"
                 id="circle"
@@ -41,10 +43,7 @@
                   <br />
                   Let's go home and try from there.
                 </h5>
-                <router-link
-                  to="/"
-                  id="btn-returnhome"
-                  class="btn btn-primary"
+                <router-link to="/" id="btn-returnhome" class="btn btn-primary"
                   >Return to Home</router-link
                 >
               </div>
@@ -53,6 +52,23 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <!-- <img src="" class="rounded mr-2" alt="..." /> -->
+      <strong class="mr-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button
+        type="button"
+        class="ml-2 mb-1 close"
+        data-dismiss="toast"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body">Hello, world! This is a toast message.</div>
   </div>
 </template>
 
@@ -79,7 +95,7 @@ export default {
         res.forEach((link) => {
           if (link.hash == hash) {
             destinationLink.value = link.url;
-            countdown.value = 100;
+            countdown.value = 10;
             const timer = setInterval(() => {
               console.log(`${countdown.value} seconds remaining...`);
               countdownDecrement();
@@ -110,20 +126,21 @@ export default {
 </script>
 
 <style>
-  #card1 {
-    border-radius: 20px;
-  }
-  #circle {
-    width: 150px; height: 150px;
-    border: 4px solid #0b5ed7;
-  }
-  h1#countdown {
-    font-size: 48px;
-  }
-  button#btn-gotolink {
-    border-radius: 25px;
-  }
-  #btn-returnhome {
-    border-radius: 25px;
-  }
+#card1 {
+  border-radius: 20px;
+}
+#circle {
+  width: 150px;
+  height: 150px;
+  border: 4px solid #0b5ed7;
+}
+h1#countdown {
+  font-size: 48px;
+}
+button#btn-gotolink {
+  border-radius: 25px;
+}
+#btn-returnhome {
+  border-radius: 25px;
+}
 </style>
