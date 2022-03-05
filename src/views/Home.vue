@@ -198,4 +198,21 @@ span#copy {
   background-color: #08377e;
   border: 1px solid #08377e;
 }
+.v-toast__item {
+    display: inline-flex;
+    align-items: center;
+    animation-duration: 150ms;
+    margin: .5em .5em;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+    border-radius: .25em;
+    pointer-events: auto;
+    opacity: .92;
+    color: #fff;
+    min-height: 3em;
+    cursor: pointer;
+    padding: 0 2em;
+}
+.v-toast__item--success {
+    background-color: #0b5ed7;
+}
 </style>
