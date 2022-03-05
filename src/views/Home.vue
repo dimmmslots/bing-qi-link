@@ -21,7 +21,11 @@
                     placeholder="Enter the link here"
                     required
                   />
-                  <button class="btn btn-primary" id="btn-shorten" v-if="!hashed">
+                  <button
+                    class="btn btn-primary"
+                    id="btn-shorten"
+                    v-if="!hashed"
+                  >
                     <i class="fas fa-link"></i> Shorten
                   </button>
                   <button
@@ -37,34 +41,29 @@
             <div class="container">
               <div class="row mt-3 justify-content-center">
                 <div class="col-md-10">
-                  <div
-                    id="comp-hashed"
-                    class="alert alert-light"
-                    v-if="hashed"
-                  >
+                  <div id="comp-hashed" class="alert alert-light" v-if="hashed">
                     <div class="row justify-content-center align-items-center">
                       <div class="col-md-2">
                         <span>Result : </span>
                       </div>
                       <div class="col-md-6 py-2">
-                        <span
-                          class="text-black"
-                          id="copy"
+                        <span class="text-black" id="copy"
                           ><i
-                            >http://bing-qi-link.vercel.app/key/{{ hashed }}</i
+                            >http://bql.co.vu/key/{{ hashed }}</i
                           ></span
                         >
                       </div>
                       <div class="col-md-4 py-2">
                         <button
-                          class="btn btn-primary btn-sm mx-2"
+                          class="unfocus mx-1"
                           id="btn-copy"
                           data-clipboard-target="#copy"
+                          @click="toastOpen"
                         >
                           <i class="fas fa-copy"></i>
                         </button>
                         <a
-                          class="btn btn-primary btn-sm"
+                          class="btn btn-primary"
                           v-if="hashed"
                           :href="'key/' + hashed"
                           >Go to Link <i class="fas fa-arrow-right"></i
@@ -98,6 +97,7 @@ import { reactive, ref } from "vue";
 import { addDoc, onSnapshot } from "firebase/firestore";
 import { colRef, db } from "../firebase";
 import ClipboardJS from "clipboard";
+import toast from "vue-toast-notification";
 export default {
   name: "Home",
   components: { Footer },
@@ -148,20 +148,54 @@ export default {
     // let counter = ref(0);
     return { shorten, hashed, input };
   },
+  methods: {
+    toastOpen() {
+      this.$toast.open({
+        message: "Copied to clipboard",
+        type: "success",
+        duration: 3000,
+        position: "top-right",
+      });
+    },
+  },
 };
 </script>
 
 <style>
-  #con1 {
-    max-width: 800px;
-  }
-  button#btn-hashed {
-    border: 1px solid #0b5ed7;
-  }
-  #comp-hashed {
-    border: 1px solid #0b5ed7;
-  }
-  span#copy {
-    text-decoration: underline;
-  }
+#con1 {
+  max-width: 800px;
+}
+button#btn-hashed {
+  border: 1px solid #0b5ed7;
+}
+#comp-hashed {
+  border: 1px solid #0b5ed7;
+}
+span#copy {
+  text-decoration: underline;
+}
+.unfocus {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  color: #fff;
+  background-color: #0d6efd;
+  border:1px solid #0d6efd;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  /* transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; */
+}
+.unfocus:active {
+  color: white;
+  background-color: #08377e;
+  border: 1px solid #08377e;
+}
 </style>

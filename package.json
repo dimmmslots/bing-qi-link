@@ -16,7 +16,8 @@
     "firebase": "^9.6.7",
     "sha-1": "^1.0.0",
     "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0"
+    "vue-router": "^4.0.0-0",
+    "vue-toast-notification": "^3.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
