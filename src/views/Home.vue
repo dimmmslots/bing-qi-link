@@ -48,13 +48,9 @@
                       </div>
                       <div class="col-md-6 py-2">
                         <span class="text-black" id="copy"
-<<<<<<< HEAD
                           ><i
                             >https://bql.co.vu/key/{{ hashed }}</i
                           ></span
-=======
-                          ><i>http://bql.co.vu/key/{{ hashed }}</i></span
->>>>>>> 2b5ca53e1936fe744beb3de14426a6cdf18b764e
                         >
                       </div>
                       <div class="col-md-4 py-2">
