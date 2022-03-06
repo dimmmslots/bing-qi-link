@@ -49,7 +49,7 @@
                       <div class="col-md-6 py-2">
                         <span class="text-black" id="copy"
                           ><i
-                            >http://bql.co.vu/key/{{ hashed }}</i
+                            >https://bql.co.vu/key/{{ hashed }}</i
                           ></span
                         >
                       </div>
